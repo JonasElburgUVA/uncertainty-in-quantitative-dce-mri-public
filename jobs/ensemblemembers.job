@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH --partition=luna-long
+#SBATCH --time=2-00:00
+#SBATCH --nodes=1
+#SBATCH --job-name=SimExp
+#SBATCH --output=output/slurm_out/SimExp%A.out
+#SBATCH --mem=8G
+#SBATCH --cpus-per-task=6
+#SBATCH --gres=gpu:4g.40gb:1
+
+set -eu
+
+source $HOME/my-scratch/Uncertainty-In-Quantitative-DCE-MRI/.venv/bin/activate
+
+configs=(
+    ood
+)
+seeds=(0 1 2 3 4)
+
+for config in "${configs[@]}"; do
+    for seed in "${seeds[@]}"; do
+        python scripts/train.py --config $config --seed $seed
+    done
+done

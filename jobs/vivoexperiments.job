@@ -1,0 +1,33 @@
+#!/bin/bash
+#SBATCH --partition=luna-long
+#SBATCH --time=7-00:00
+#SBATCH --nodes=1
+#SBATCH --job-name=VivoExp
+#SBATCH --output=output/slurm_out/VivoExp%A.out
+#SBATCH --mem=12G
+#SBATCH --cpus-per-task=6
+#SBATCH --gres=gpu:a100:1
+
+set -eu
+
+source $HOME/my-scratch/Uncertainty-In-Quantitative-DCE-MRI/.venv/bin/activate
+
+configs=(
+    pinn_ph
+    mve_pinn
+)
+seeds=(0 1 2 3 4)
+eval_configs=(
+    # ensemble_snn
+    ensemble_pinn
+)
+
+for config in "${configs[@]}"; do
+    for seed in "${seeds[@]}"; do
+        python scripts/train.py --config vivo/"$config" --seed $seed
+    done
+done
+
+for config in "${eval_configs[@]}"; do
+    python scripts/ensemble.py --config configs/vivo/"$config".yaml
+done

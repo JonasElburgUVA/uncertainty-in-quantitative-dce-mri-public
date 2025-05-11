@@ -1,0 +1,11 @@
+seed: 0
+paths: [
+  "vivo/pinn_ph_dcenet_0",
+  "vivo/pinn_ph_dcenet_1",
+  "vivo/pinn_ph_dcenet_2",
+  "vivo/pinn_ph_dcenet_3",
+  "vivo/pinn_ph_dcenet_4",
+]
+logger: wandb
+debug: 0
+dataset: vivo

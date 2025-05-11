@@ -1,0 +1,44 @@
+#!/bin/bash
+#SBATCH --partition=luna-long
+#SBATCH --time=2-00:00
+#SBATCH --nodes=1
+#SBATCH --job-name=MVEoodPINNens
+#SBATCH --output=output/slurm_out/SimExp%A.out
+#SBATCH --mem=12G
+#SBATCH --cpus-per-task=6
+#SBATCH --gres=gpu:a100:1
+
+set -eu
+
+source $HOME/my-scratch/Uncertainty-In-Quantitative-DCE-MRI/.venv/bin/activate
+
+datasets=(
+    # normal
+    ood
+)
+configs=(
+    # snn
+    # baseline
+    mve_snn
+    # mve_pinn
+    # pinn_ph
+    # mcd
+)
+seeds=(10 11 12 13 14)
+eval_configs=(
+    ensemble_snn
+    # ensemble_pinn
+)
+
+
+for dataset in "${datasets[@]}"; do
+    for config in "${configs[@]}"; do
+        for seed in "${seeds[@]}"; do
+            python scripts/train.py --config "$dataset"/"$config" --seed $seed
+        done
+    done
+
+    for config in "${eval_configs[@]}"; do
+        python scripts/ensemble.py --config configs/"$dataset"/"$config".yaml
+    done
+done

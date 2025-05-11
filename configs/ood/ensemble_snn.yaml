@@ -1,0 +1,21 @@
+seed: 0
+paths: [
+  ood/mve_snn_dcenet_0,
+  ood/mve_snn_dcenet_1,
+  ood/mve_snn_dcenet_2,
+  ood/mve_snn_dcenet_3,
+  ood/mve_snn_dcenet_4,
+  # ood_bu/mve_snn_dcenet_5,
+  # ood_bu/mve_snn_dcenet_6,
+  # ood_bu/mve_snn_dcenet_7,
+  # ood_bu/mve_snn_dcenet_8,
+  # ood_bu/mve_snn_dcenet_9,
+  # ood/mve_snn_dcenet_10,
+  # ood/mve_snn_dcenet_11,
+  # ood/mve_snn_dcenet_12,
+  # ood/mve_snn_dcenet_13,
+  # ood/mve_snn_dcenet_14,
+]
+logger:  wandb
+debug: False
+dataset: ood

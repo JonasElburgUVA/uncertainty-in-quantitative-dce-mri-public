@@ -1,0 +1,17 @@
+*.pyc
+.vscode/
+data/sim
+data/vivo
+scripts/lightning_logs/
+*.DS_Store
+.env
+checkpoints/
+wandb/
+lightning_logs/
+output/ 
+DCE-MRI/
+jobs/local.bash
+test.ipynb
+output_611/
+scripts_natalia/
+output small/

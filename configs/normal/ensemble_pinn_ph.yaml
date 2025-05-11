@@ -1,0 +1,11 @@
+seed: 0
+paths: [
+  "normal/pinn_ph_dcenet_0",
+  "normal/pinn_ph_dcenet_1",
+  "normal/pinn_ph_dcenet_2",
+  "normal/pinn_ph_dcenet_3",
+  "normal/pinn_ph_dcenet_4",
+]
+logger: wandb
+debug: False
+dataset: normal

@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --partition=luna-short
+#SBATCH --time=03:00:00
+#SBATCH --nodes=1
+#SBATCH --job-name=SimExp
+#SBATCH --output=output/slurm_out/SimExp%A.out
+#SBATCH --mem=8G
+#SBATCH --cpus-per-task=6
+#SBATCH --gres=gpu:a100:1
+
+set -eu
+
+source $HOME/my-scratch/Uncertainty-In-Quantitative-DCE-MRI/.venv/bin/activate
+
+configs=(
+    mve_pinn
+)
+
+for config in "${configs[@]}"; do
+    python scripts/train.py --config $config --seed 43
+done

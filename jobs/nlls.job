@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --partition=luna-cpu-long
+#SBATCH --time=3-00:00
+#SBATCH --nodes=1
+#SBATCH --job-name=SimExp
+#SBATCH --output=output/slurm_out/NLLS%A.out
+#SBATCH --mem=128G
+#SBATCH --cpus-per-task=16
+
+set -eu
+
+source $HOME/my-scratch/Uncertainty-In-Quantitative-DCE-MRI/.venv/bin/activate
+
+python scripts/nlls.py --mode vivo

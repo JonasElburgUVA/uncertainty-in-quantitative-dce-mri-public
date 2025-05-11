@@ -1,0 +1,11 @@
+seed: 0
+paths: [
+  ood/mve_pinn_dcenet_0,
+  ood/mve_pinn_dcenet_1,
+  ood/mve_pinn_dcenet_2,
+  ood/mve_pinn_dcenet_3,
+  ood/mve_pinn_dcenet_4,
+]
+logger: wandb
+debug: False
+dataset: ood

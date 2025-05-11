@@ -1,0 +1,17 @@
+epochs: 1               # Max Number of epochs
+early_stopping_epochs: 5   # Early stopping epochs
+model: mve_pinn         # baseline, snn, pinn, mve_snn, mve_pinnm
+network: fc_unc         # fc, fc_unc, dcenet, dcenet_unc
+mode: sim                   # Model mode: sim or invivo
+weights:              # path to pretrained weights
+dataset: normal                # Train dataset: normal, ood, or invivo
+batch_size: 256             # Batch size
+lr: 1e-4                   # Learning rate
+batch_per_epoch: 0.01        # Fraction of dataset to use per epoch
+logger:                    # wandb or None (for default local logging)
+debug: 1                    # 0 or 1
+mcd: 0                      # 0 or 1, only for snn and pinn        # 
+kwargs: {
+  burnin_epochs: 0, # Burnin epochs, only used for MVE models
+  dt_predictor: 1
+}

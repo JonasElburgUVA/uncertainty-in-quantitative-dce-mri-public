@@ -1,0 +1,11 @@
+seed: 0
+paths: [
+  "vivo/mve_pinn_dcenet_0",
+  "vivo/mve_pinn_dcenet_1",
+  "vivo/mve_pinn_dcenet_2",
+  "vivo/mve_pinn_dcenet_3",
+  "vivo/mve_pinn_dcenet_4",
+]
+logger: 
+debug: False
+dataset: vivo
